@@ -2,16 +2,20 @@
 $conn = mysqli_connect("localhost", "root", "", "warsztat");
 
 $result = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi");
+var_dump($_POST);
 // $row = mysqli_fetch_array($result);
 // var_dump($row);
-// $row = mysqli_fetch_array($result);
-// var_dump($row);
-// $row = mysqli_fetch_array($result);
-// var_dump($row);
-// $row = mysqli_fetch_array($result);
-// var_dump($row);
+$chekname = $_POST["name"] ?? " ";
+$checknumber = $_POST["number"] ?? " ";
 
-
+if (isset($_POST["name"], $_POST["number"], $_POST["usluga"], $_POST["uwagi"])) {
+}
+if (empty($chekname) || empty($checknumber)) {
+    echo "nie jest wypełnione pole";
+} else {
+    echo "OK";
+}
+//$skript2 = mysqli_query($conn, "INSERT INTO ");
 
 ?>
 <!DOCTYPE html>
@@ -36,17 +40,11 @@ $result = mysqli_query($conn, "SELECT id, nazwa, cena FROM uslugi");
             <label for="number">Numer rejestracji pojazdu</label>
             <input type="text" name="number">
             <select name="usluga" id="">
-
                 <?php
                 while ($row = mysqli_fetch_array($result)) {
-                    echo '<option value="' . $row["id"] . '">' . $row['nazwa'] .'</option>';
+                    echo '<option value="' . $row["id"] . '">' . $row['nazwa'] . '</option>';
                 }
-
-                isset($_POST);
-
-                isset()
                 ?>
-
             </select>
             <textarea name="uwagi" id=""></textarea>
             <button type="submit">Dodaj zgłoszenie</button>
